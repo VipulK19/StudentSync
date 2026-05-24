@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parent Dashboard — StudentSync</title>
+  <meta name="description" content="StudentSync parent dashboard — monitor your child's campus presence, attendance, and receive real-time alerts.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Mobile Sidebar Toggle -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">📡 StudentSync</div>
+      <div class="sidebar-role">Parent Portal</div>
+
+      <ul class="sidebar-nav">
+        <li><a href="#" class="active"><span class="nav-icon">📊</span> Dashboard</a></li>
+        <li><a href="#"><span class="nav-icon">👦</span> Child Status</a></li>
+        <li><a href="#"><span class="nav-icon">🔔</span> Alerts</a></li>
+        <li><a href="#"><span class="nav-icon">📅</span> Timetable</a></li>
+        <li><a href="#"><span class="nav-icon">📈</span> Attendance</a></li>
+        <li><a href="#"><span class="nav-icon">📞</span> Contact</a></li>
+        <li><a href="#"><span class="nav-icon">⚙️</span> Settings</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar" style="background: var(--gradient-green);" id="user-avatar">SS</div>
+          <div class="sidebar-user-info">
+            <div class="name" id="user-name">Suresh Sharma</div>
+            <div class="email" id="user-email">parent@demo.com</div>
+          </div>
+        </div>
+        <button class="btn-secondary-ss btn-sm mt-1" style="width: 100%; justify-content: center;" onclick="logout()">
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+      <!-- Header -->
+      <div class="dashboard-header">
+        <div>
+          <h1>Welcome, <span id="greeting-name">Parent</span> 👋</h1>
+          <p id="header-date" class="header-date"></p>
+        </div>
+      </div>
+
+      <!-- Child Info Banner -->
+      <div class="glass-card mb-2" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem;">
+        <div class="sidebar-avatar" style="width: 56px; height: 56px; font-size: 1.2rem;">RS</div>
+        <div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.2rem;">Rahul Sharma</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">STU2024001 • CSBS • 3rd Year</p>
+        </div>
+        <div style="margin-left: auto;">
+          <span class="badge badge-green" style="font-size: 0.85rem; padding: 0.4rem 1rem;">● On Campus</span>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stat-cards">
+        <div class="stat-card" id="campus-status-card">
+          <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);">📍</div>
+          <div class="stat-value" id="stat-campus-status" style="font-size: 1.4rem;">On Campus</div>
+          <div class="stat-label">Campus Status</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);">📊</div>
+          <div class="stat-value" id="stat-child-attendance">85%</div>
+          <div class="stat-label">Attendance Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">📅</div>
+          <div class="stat-value" id="stat-today-lectures">5</div>
+          <div class="stat-label">Today's Lectures</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-orange);">🔔</div>
+          <div class="stat-value" id="stat-alerts-count">0</div>
+          <div class="stat-label">Total Alerts</div>
+        </div>
+      </div>
+
+      <!-- Main Grid -->
+      <div class="dashboard-grid">
+
+        <!-- Alerts Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <h3>🔔 Alerts & Notifications</h3>
+            <span class="badge badge-orange">Today</span>
+          </div>
+          <div id="parent-alerts">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Attendance Overview -->
+        <div class="panel">
+          <div class="panel-header">
+            <h3>📊 Attendance Overview</h3>
+          </div>
+          <div class="attendance-ring-container" id="child-attendance-ring">
+            <!-- Rendered by JS -->
+          </div>
+          <div style="text-align: center; padding: 0 1rem;">
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">
+              Your child has attended <strong style="color: var(--accent-blue);">102</strong> out of <strong>120</strong> lectures this semester.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Today's Schedule -->
+      <div class="panel mt-2">
+        <div class="panel-header">
+          <h3>📅 Today's Lecture Schedule</h3>
+          <span class="badge badge-blue" id="parent-day-badge">Monday</span>
+        </div>
+        <ul class="timetable-list" id="child-timetable">
+          <!-- Rendered by JS -->
+        </ul>
+      </div>
+
+      <!-- Contact Card -->
+      <div class="glass-card mt-2" style="display: flex; align-items: center; gap: 1.5rem;">
+        <div class="card-icon green" style="width: 48px; height: 48px; font-size: 1.3rem;">📞</div>
+        <div>
+          <h3 style="font-size: 1rem;">Need to contact the institution?</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">Reach out to KIT College of Engineering for any queries regarding your child's attendance or campus status.</p>
+        </div>
+        <button class="btn-primary-ss btn-sm btn-success-ss" style="margin-left: auto; white-space: nowrap;">Contact Now</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Dashboard.renderParentDashboard();
+      const dayBadge = document.getElementById('parent-day-badge');
+      if (dayBadge) {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        dayBadge.textContent = days[new Date().getDay()];
+      }
+    });
+  </script>
+</body>
+</html>

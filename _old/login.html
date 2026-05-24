@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login — StudentSync</title>
+  <meta name="description" content="Login to your StudentSync account. Access student, parent, or admin dashboards.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <span class="auth-logo">📡 StudentSync</span>
+
+      <div class="auth-header">
+        <h1>Welcome Back</h1>
+        <p>Sign in to your account</p>
+      </div>
+
+      <!-- Role Tabs -->
+      <div class="role-tabs">
+        <button class="role-tab active" data-role="student">🎓 Student</button>
+        <button class="role-tab" data-role="parent">👨‍👩‍👧 Parent</button>
+        <button class="role-tab" data-role="admin">⚙️ Admin</button>
+      </div>
+
+      <!-- Demo Credentials -->
+      <div class="demo-creds" id="demo-creds">
+        <strong>Demo student credentials:</strong> student@demo.com / demo123
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-input" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+        </div>
+
+        <div id="login-error" class="form-error" style="margin-bottom: 1rem;"></div>
+
+        <button type="submit" class="btn-primary-ss" style="width: 100%; justify-content: center;">
+          Sign In →
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="register.html">Create one</a>
+        <br><br>
+        <a href="index.html" style="font-size: 0.8rem;">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', initLoginPage);
+  </script>
+</body>
+</html>

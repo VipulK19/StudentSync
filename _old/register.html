@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register — StudentSync</title>
+  <meta name="description" content="Create a StudentSync account. Register as a student or parent to get started.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card" style="max-width: 520px;">
+      <span class="auth-logo">📡 StudentSync</span>
+
+      <div class="auth-header">
+        <h1>Create Account</h1>
+        <p>Register as a student or parent</p>
+      </div>
+
+      <!-- Role Tabs -->
+      <div class="role-tabs">
+        <button class="role-tab active" data-role="student">🎓 Student</button>
+        <button class="role-tab" data-role="parent">👨‍👩‍👧 Parent</button>
+      </div>
+
+      <!-- Register Form -->
+      <form id="register-form">
+        <div class="form-group">
+          <label for="reg-name">Full Name</label>
+          <input type="text" id="reg-name" class="form-input" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" class="form-input" placeholder="you@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">Phone Number</label>
+            <input type="tel" id="reg-phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
+
+        <!-- Student-specific fields -->
+        <div id="student-fields">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-student-id">Student ID</label>
+              <input type="text" id="reg-student-id" class="form-input" placeholder="e.g. STU2024001">
+            </div>
+            <div class="form-group">
+              <label for="reg-year">Year</label>
+              <select id="reg-year" class="form-select">
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year" selected>3rd Year</option>
+                <option value="4th Year">4th Year</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reg-department">Department</label>
+            <select id="reg-department" class="form-select">
+              <option value="CSBS">Computer Science & Business Systems (CSBS)</option>
+              <option value="CS">Computer Science & Engineering</option>
+              <option value="IT">Information Technology</option>
+              <option value="Mechanical">Mechanical Engineering</option>
+              <option value="Civil">Civil Engineering</option>
+              <option value="E&TC">Electronics & Telecommunication</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Parent-specific fields -->
+        <div id="parent-fields" style="display: none;">
+          <div class="form-group">
+            <label for="reg-child-id">Child's Student ID</label>
+            <input type="text" id="reg-child-id" class="form-input" placeholder="Enter your child's Student ID (e.g. STU2024001)">
+            <div class="form-error">Student ID not found</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" class="form-input" placeholder="Min 6 characters" required>
+            <div class="form-error">Password too short</div>
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm">Confirm Password</label>
+            <input type="password" id="reg-confirm" class="form-input" placeholder="Repeat password" required>
+            <div class="form-error">Passwords do not match</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary-ss mt-2" style="width: 100%; justify-content: center;">
+          Create Account →
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign in</a>
+        <br><br>
+        <a href="index.html" style="font-size: 0.8rem;">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', initRegisterPage);
+  </script>
+</body>
+</html>
